@@ -12,14 +12,26 @@ module.exports = {
         publicPath: "/build/",
         compress: true,
         port: 3001,
-        historyApiFallback: true
+        historyApiFallback: true,
+        open: true
     },
     module: {
         rules: [
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: "babel-loader"
+                loader: "babel-loader",
+                options: {
+                    "presets": [
+                        "@babel/preset-env",
+                        "@babel/preset-react",
+                        {
+                            "plugins": [
+                                "@babel/plugin-proposal-class-properties"
+                            ]
+                        }
+                    ]
+                }
             }
         ]
     }
